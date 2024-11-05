@@ -34,6 +34,8 @@ const Login = () => {
     if (message) return false;
 
     if (!isSignInForm) {
+      setErrorMsg("This feature disabled temporary.");
+      return;
       // Sign up logic
       createUserWithEmailAndPassword(
         auth,
@@ -63,6 +65,7 @@ const Login = () => {
           // ..
         });
     } else {
+      setErrorMsg("");
       // Sign in logic
       signInWithEmailAndPassword(
         auth,
