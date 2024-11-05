@@ -6,6 +6,7 @@ import { auth } from "../utils/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
+import MovieDetails from "./MovieDetails";
 
 const Body = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,10 @@ const Body = () => {
     {
       path: "/browse",
       element: <Browse />,
+    },
+    {
+      path: "/movie/:id",
+      element: <MovieDetails />,
     },
   ]);
 
@@ -36,7 +41,7 @@ const Body = () => {
   }, []);
 
   return (
-    <div>
+    <div className="container">
       <RouterProvider router={appRouter}>
         <Login />
         <Browse />

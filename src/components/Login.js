@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 
 const Login = () => {
@@ -19,6 +19,9 @@ const Login = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const user = useSelector((store) => store.user);
+  if (user) navigate("/browse");
 
   const handleSignInForm = () => setIsSignInForm(!isSignInForm);
   const handleForm = () => {
